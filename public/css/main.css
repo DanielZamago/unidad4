@@ -1,0 +1,12 @@
+.container form fielset {
+  background-color: #E48F72;
+}
+.container form fielset button {
+  width: 60px;
+  min-height: 30px;
+  background-color: #527BDF;
+  color: white;
+}
+.container {
+  background-color: red;
+}
