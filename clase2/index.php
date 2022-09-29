@@ -57,20 +57,21 @@
             <h1>Acceso al panel</h1>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas corrupti, officia ex dolore ad veniam excepturi distinctio! Perspiciatis expedita aliquid vitae enim labore. Repudiandae cupiditate eos quod labore laborum! Magni.</p>
           </div>
-          <form method="get" action="products" class="form">
+          <form method="post" action="app/AuthController.php" class="form">
             <label for="">Correo electronico</label>
             <div class="input-group mb-3">
               <span class="input-group-text" id="basic-addon1">@</span>
-              <input type="text" class="form-control" placeholder="username@email.com" aria-label="Username" aria-describedby="basic-addon1">
+              <input name="email" type="text" class="form-control" placeholder="username@email.com" aria-label="Username" aria-describedby="basic-addon1">
             </div>
             <label for="">Password</label>
             <div class="input-group mb-3">
               <span class="input-group-text" id="basic-addon1">#</span>
-              <input type="text" class="form-control" placeholder="*******" aria-label="Username" aria-describedby="basic-addon1">
+              <input name="password" type="text" class="form-control" placeholder="*******" aria-label="Username" aria-describedby="basic-addon1">
             </div>
             <button type="submit" class="btn btn-primary col-12 mb-3">
               Acceder
             </button>
+            <input type="hidden" value="access" name="action">
           </form>
         </div>
       </div>
