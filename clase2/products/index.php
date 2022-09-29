@@ -30,24 +30,26 @@
                         </div>
                     </div>
                     <div class="row">
-                        <?php for ($i=0; $i < 16; $i++): ?>
-                        
-                            <div class="col-md-3 col-sm-12 p-2">
-                                <div class="card" style="width: 18rem;">
-                                    <img src="<?php echo $products[$i]->cover ?> " class="card-img-top" alt="...">
-                                    <div class="card-body">
-                                        <h5 class="card-title"><?php echo $products[$i]->name ?></h5>
-                                        <h6 class="card-subtitle mb-2 text-muted"><?php echo $products[$i]->slug ?></h6>
-                                        <p class="card-text"><?php echo $products[$i]->description ?></p>
-                                        <div class="row">
-                                            <a data-bs-toggle="modal" data-bs-target="#createProductModal" href="#" class="btn btn-primary col-6">Editar</a>
-                                            <a onclick="remove(this)" href="#" class="btn btn-danger col-6">Eliminar</a>
-                                            <a href="details.php" class="mt-2 btn btn-success col-12">Detalles</a>
+                        <?php if(isset($products) && count($products)>0): ?>
+                            <?php foreach($products as $product): ?>
+                            
+                                <div class="col-md-3 col-sm-12 p-2">
+                                    <div class="card" style="width: 18rem;">
+                                        <img src="<?php echo $product->cover ?> " class="card-img-top" alt="...">
+                                        <div class="card-body">
+                                            <h5 class="card-title"><?php echo $product->name ?></h5>
+                                            <h6 class="card-subtitle mb-2 text-muted"><?php echo $product->brand->name ?></h6>
+                                            <p class="card-text"><?php echo $product->description ?></p>
+                                            <div class="row">
+                                                <a data-bs-toggle="modal" data-bs-target="#createProductModal" href="#" class="btn btn-primary col-6">Editar</a>
+                                                <a onclick="remove(this)" href="#" class="btn btn-danger col-6">Eliminar</a>
+                                                <a href="details.php" class="mt-2 btn btn-success col-12">Detalles</a>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        <?php endfor ?>
+                            <?php endforeach ?>
+                        <?php endif ?>
                     </div>
                 </div>
             </div>
@@ -61,23 +63,39 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModelLabel">
-                        Modal title
+                        Añadir producto
                     </h5>
                     <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body">
-                    <?php for($i=0;$i<6;$i++): ?>
-                        <span class="input-group-text" id="basic-addon1">info</span>
-                    <?php endfor; ?>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-                        Close
-                    </button>
-                    <button type="button" class="btn btn-primary">
-                        Save changes
-                    </button>
-                </div>
+                <form method="POST" action="../app/ProductsController.php">
+                    <input type="hidden" name="action" value="create">
+                    <div class="modal-body">
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control" name="name" placeholder="Nombre" aria-label="Username" aria-describedby="basic-addon1">
+                        </div>
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control" name="slug" placeholder="Product slug" aria-label="Username" aria-describedby="basic-addon1">
+                        </div>
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control" name="description" placeholder="Descripcion" aria-label="Username" aria-describedby="basic-addon1">
+                        </div>
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control" name="features" placeholder="Features" aria-label="Username" aria-describedby="basic-addon1">
+                        </div>
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control" name="brand_id" placeholder="Brand id" aria-label="Username" aria-describedby="basic-addon1">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                            Close
+                        </button>
+                        <button type="submit" class="btn btn-primary">
+                            Save changes
+                        </button>
+                    </div>
+
+                </form>
             </div>
         </div>
     </div>
