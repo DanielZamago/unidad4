@@ -1,21 +1,23 @@
 <?php
-session_start();
-var_dump($_POST);
-if (isset($_POST['action'])) {
-	switch ($_POST['action']) {
-		case 'create':
+	session_start();
 
-			$name = strip_tags($_POST['name']);
-			$slug = strip_tags($_POST['slug']);
-			$description = strip_tags($_POST['description']);
-			$features = strip_tags($_POST['features']);
-			$brand_id = strip_tags($_POST['brand_id']);
-			$productController = new ProductsController();
-			$productController->createProduct($name, $slug, $description, $features, $brand_id);
+	if (isset($_POST['action'])) {
+		switch ($_POST['action']) {
+			case 'create':
+				$name = strip_tags($_POST['name']);
+				$slug = strip_tags($_POST['slug']);
+				$description = strip_tags($_POST['description']);
+				$features = strip_tags($_POST['features']);
+				$brand_id = strip_tags($_POST['brand_id']);
 
-		break; 
+				$target_path = $_FILES['uploadedfile']['tmp_name'];
+
+				$productController = new ProductsController();
+				$productController->createProduct($name, $slug, $description, $features, $brand_id, $target_path);
+
+			break; 
+		}
 	}
-}
 
 Class ProductsController{
     public function info(){
@@ -46,9 +48,9 @@ Class ProductsController{
 		}
     }
 
-	public function createProduct($name, $slug, $description, $features, $brand_id){
+	public function createProduct($name, $slug, $description, $features, $brand_id, $target_path){
 		$curl = curl_init();
-		
+
 		curl_setopt_array($curl, array(
 		CURLOPT_URL => 'https://crud.jonathansoto.mx/api/products',
 		CURLOPT_RETURNTRANSFER => true,
@@ -66,19 +68,21 @@ Class ProductsController{
 			'description' => $description,
 			'features' => $features,
 			'brand_id' => $brand_id,
+			'cover'=> new CURLFILE($target_path)
 		),
 		));
-
+		
 		$response = curl_exec($curl);
 		curl_close($curl);
-		$response = json_decode($response);
+        $response = json_decode($response);
 
-		if ( isset($response->code) && $response->code > 0) {
+		if (isset($response->code) && $response->code > 0) {
 			header("Location:../products?sucess=true");
-		}else
-			var_dump($response);
+		}else{
 			header("Location:../products?sucess=false");
 		}
+			
 	}
+}
 
 ?>

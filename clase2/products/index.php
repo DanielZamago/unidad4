@@ -67,7 +67,7 @@
                     </h5>
                     <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form method="POST" action="../app/ProductsController.php">
+                <form enctype="multipart/form-data" method="POST" action="../app/ProductsController.php">
                     <input type="hidden" name="action" value="create">
                     <div class="modal-body">
                         <div class="input-group mb-3">
@@ -85,6 +85,11 @@
                         <div class="input-group mb-3">
                             <input type="text" class="form-control" name="brand_id" placeholder="Brand id" aria-label="Username" aria-describedby="basic-addon1">
                         </div>
+                        <div class="input-group mb-3">
+                            <input name="uploadedfile" type="file" />
+                            <input type="submit" value="Subir archivo" />
+                        </div>
+                        
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
