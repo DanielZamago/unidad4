@@ -71,7 +71,7 @@ Class ProductsController{
 			'cover'=> new CURLFILE($target_path)
 		),
 		));
-		
+		// echo $brand_id;
 		$response = curl_exec($curl);
 		curl_close($curl);
         $response = json_decode($response);

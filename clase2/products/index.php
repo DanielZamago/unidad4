@@ -1,4 +1,7 @@
-<?php include "../layouts/includeProducts.template.php" ?>
+<?php 
+    include "../layouts/includeProducts.template.php" 
+?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -82,14 +85,24 @@
                         <div class="input-group mb-3">
                             <input type="text" class="form-control" name="features" placeholder="Features" aria-label="Username" aria-describedby="basic-addon1">
                         </div>
-                        <div class="input-group mb-3">
-                            <input type="text" class="form-control" name="brand_id" placeholder="Brand id" aria-label="Username" aria-describedby="basic-addon1">
+                        <div class="mb-3">
+                            <label for="" class="">Escoge la Marca de tu producto</label>
+                        </div>
+                        <div class="btn-group">
+                            <select name="brand_id" class="form-select">
+                                <li class="dropdown-menu">
+                                    <?php foreach($array as $brand): ?>
+                                        <li><option value="<?php echo $brand->id?>"><?php echo $brand->id. "->".$brand->name ?></option></li>
+                                     <?php endforeach ?>
+                                </li>
+                            </select>
+                        </div>
+                        <div class="input-group mb-3 mt-4">
+                            <label class="form-label">Imagen del producto</label>
                         </div>
                         <div class="input-group mb-3">
-                            <input name="uploadedfile" type="file" />
-                            <input type="submit" value="Subir archivo" />
+                            <input class="form-control form-control-sm" name="uploadedfile" type="file">
                         </div>
-                        
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
