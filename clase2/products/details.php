@@ -3,6 +3,12 @@
 <head>
 
     <?php include "../layouts/head.template.php"; ?>
+    <?php 
+        include "../app/ProductsSlugConstroller.php";
+        $producto = new ProductSlugController;
+        $product = $producto->infoProduct($_GET['slug']);
+        // var_dump($product);
+    ?>
 
 </head>
 <body>
@@ -21,24 +27,25 @@
                                 <h4>Productos</h4>
                             </div>
                             <div class="col">
-                                <button data-bs-toggle="modal" data-bs-target="#createProductModal" class="btn btn-success float-end">
-                                    Añador Productos
-                                </button>
+                                <a href="index.php" class="btn btn-success float-end">
+                                    Añadir Productos
+                                </a>
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-3 col-sm-12 p-2">
                             <div class="card" style="width: 18rem;">
-                                <img src="../public/ame.png" class="card-img-top" alt="...">
+                                <img src="<?php echo $product->cover ?>" class="card-img-top" alt="...">
                                 <div class="card-body">
-                                    <h5 class="card-title">Card title</h5>
-                                    <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-                                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                    <h5 class="card-title"><?php echo $product->name ?></h5>
+                                    <?php if(isset($product->brand->name)): ?>
+                                        <h6 class="card-subtitle mb-2 text-muted"><?php echo $product->brand->name ?> </h6>
+                                    <?php endif ?>
+                                    <p class="card-text"><?php echo $product->description ?></p>
                                     <div class="row">
                                         <a data-bs-toggle="modal" data-bs-target="#createProductModal" href="#" class="btn btn-primary col-6">Editar</a>
                                         <a onclick="remove(this)" href="#" class="btn btn-danger col-6">Eliminar</a>
-                                        <a href="details.php" class="mt-2 btn btn-success col-12">Detalles</a>
                                     </div>
                                 </div>
                             </div>
