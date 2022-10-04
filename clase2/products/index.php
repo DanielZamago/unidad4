@@ -26,7 +26,7 @@
                                 <h4>Productos</h4>
                             </div>
                             <div class="col">
-                                <button @onclick="addProduct()" onclick="addProduct" data-bs-toggle="modal" data-bs-target="#createProductModal" class="btn btn-success float-end">
+                                <button onclick="addProduct()" data-bs-toggle="modal" data-bs-target="#createProductModal" class="btn btn-success float-end">
                                     Añadir Productos
                                 </button>
                             </div>
@@ -113,7 +113,7 @@
                         </button>
                     </div>
                     <input id="input_oculto" type="hidden" name="action" value="create">
-                    <input id="id" type="hidden" name="id" value="edit">
+                    <input id="id" type="hidden" name="id">
 
                 </form>
             </div>
@@ -121,7 +121,7 @@
     </div>
 
     <script type="text/javascript">
-        function remove(target){
+        function remove(id){
             swal({
                 title: "Estas seguro?",
                 text: "Una vez borrado, no podras recuperar la información!",
@@ -131,22 +131,29 @@
             })
             .then((willDelete) => {
                 if (willDelete) {
-                swal("El archivo se elimino exitosamente!", {
-                    icon: "success",
-                });
+                    swal("El archivo se elimino exitosamente!", {
+                        icon: "success",
+
+                    });
+                    var bodyFormData = new FormData();
+                    bodyFormData.append('id', id);
+                    bodyFormData.append('action', 'delete');
+
+                    axios.post('../app/ProductsController.php', bodyFormData)
+                    .then(function (response){
+                        console.log(response);
+                    })
+                    .catch(function (error){
+                        console.log('error')
+                    })
                 } else {
-                swal("El archivo continua guardado!");
+                    swal("El archivo continua guardado!");
                 }
             });
         }
 
         function addProduct(){
             document.getElementById("input_oculto").value="create";
-            document.getElementById("name").value = "";
-            document.getElementById("description").value = "";
-            document.getElementById("slug").value = "";
-            document.getElementById("features").value = "";
-            document.getElementById("id").value = "";
         }
     
         function editProduct(target){
