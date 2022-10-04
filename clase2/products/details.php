@@ -7,7 +7,7 @@
         include "../app/ProductsSlugConstroller.php";
         $producto = new ProductSlugController;
         $product = $producto->infoProduct($_GET['slug']);
-        // var_dump($product);
+        var_dump($product);
     ?>
 
 </head>
@@ -28,7 +28,7 @@
                             </div>
                             <div class="col">
                                 <a href="index.php" class="btn btn-success float-end">
-                                    Añadir Productos
+                                    Volver al menu
                                 </a>
                             </div>
                         </div>
@@ -43,6 +43,15 @@
                                         <h6 class="card-subtitle mb-2 text-muted"><?php echo $product->brand->name ?> </h6>
                                     <?php endif ?>
                                     <p class="card-text"><?php echo $product->description ?></p>
+                                    <h5 class="card-title">Categorias</h5>
+                                    <?php foreach($product->categories as $category):?>
+                                        <p class="card-text"><?php echo $category->name ?></p>
+                                    <?php endforeach ?>
+                                    <h5 class="card-title">Etiquetas</h5>
+                                    <?php foreach($product->tags as $tag):?>
+                                        <p class="card-text"><?php echo $tag->name ?></p>
+                                    <?php endforeach ?>
+
                                     <div class="row">
                                         <a data-bs-toggle="modal" data-bs-target="#createProductModal" href="#" class="btn btn-primary col-6">Editar</a>
                                         <a onclick="remove(this)" href="#" class="btn btn-danger col-6">Eliminar</a>
