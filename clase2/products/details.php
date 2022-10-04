@@ -7,7 +7,7 @@
         include "../app/ProductsSlugConstroller.php";
         $producto = new ProductSlugController;
         $product = $producto->infoProduct($_GET['slug']);
-        var_dump($product);
+        // var_dump($product);
     ?>
 
 </head>
