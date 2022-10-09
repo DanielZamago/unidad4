@@ -1,3 +1,6 @@
+<?php 
+  include_once "app/config.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -72,6 +75,7 @@
               Acceder
             </button>
             <input type="hidden" value="access" name="action">
+            <input type="hidden" value="<?php echo $_SESSION['global_token'] ?>" name="global_token">
           </form>
         </div>
       </div>

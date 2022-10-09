@@ -3,6 +3,7 @@
 $array = [];
 $brandsController = new BrandsController();
 $array = $brandsController->info();
+include_once "config.php";
 
 Class brandsController{
     public function info(){

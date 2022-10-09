@@ -1,6 +1,6 @@
 <?php
     // echo $_GET['slug'];
-    session_start();
+    include_once "config.php";
     $slug;
     if(isset($_GET['slug'])){
         $slug = $_GET['slug'];
