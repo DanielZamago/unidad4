@@ -2,10 +2,12 @@
     // echo $_GET['slug'];
     include_once "config.php";
     $slug;
-    if(isset($_GET['slug'])){
-        $slug = $_GET['slug'];
-        // $productSlugController = new ProductSlugController(); 
-        // $productSlugController->infoProduct($slug);
+    if (isset($_POST['global_token']) && ($_POST['global_token'] == $_SESSION['global_token'])){
+        if(isset($_GET['slug'])){
+            $slug = $_GET['slug'];
+            // $productSlugController = new ProductSlugController(); 
+            // $productSlugController->infoProduct($slug);
+        }
     }
 
     class ProductSlugController{

@@ -114,6 +114,7 @@
                     </div>
                     <input id="input_oculto" type="hidden" name="action" value="create">
                     <input id="id" type="hidden" name="id">
+                    //global Token en el modal
                     <input type="hidden" value="<?php echo $_SESSION['global_token'] ?>" name="global_token">
 
                 </form>

@@ -53,7 +53,7 @@ Class AuthController{
 			$_SESSION['avatar']= $response->data->avatar;
 			$_SESSION['token']= $response->data->token;
 
-			header("Location:../products");
+			header("Location:products");
 		}else{
 
 
