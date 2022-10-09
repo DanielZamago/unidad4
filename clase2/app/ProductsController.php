@@ -98,9 +98,9 @@ Class ProductsController{
         $response = json_decode($response);
 
 		if (isset($response->code) && $response->code > 0) {
-			header("Location:../products?sucess=true");
+			header("Location:".BASE_PATH."products?sucess=true");
 		}else{
-			header("Location:../products?sucess=false");
+			header("Location:".BASE_PATH."products?sucess=false");
 		}
 			
 	}
@@ -129,9 +129,9 @@ Class ProductsController{
 		$response = json_decode($response);
 
 		if (isset($response->code) && $response->code > 0) {
-			header("Location:../products?update=true");
+			header("Location:".BASE_PATH."products?update=true");
 		}else{
-			header("Location:../products?update=false");
+			header("Location:".BASE_PATH."products?update=false");
 		}
 	}
 
@@ -157,9 +157,9 @@ Class ProductsController{
 		curl_close($curl);
 		$response = json_decode($response);
 		if (isset($response->code) && $response->code > 0) {
-			header("Location:../products?delete=true");
+			header("Location:".BASE_PATH."products?delete=true");
 		}else{
-			header("Location:../products?delete=false");
+			header("Location:".BASE_PATH."products?delete=false");
 		}
 	}
 }

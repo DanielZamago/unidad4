@@ -70,7 +70,7 @@
                     </h5>
                     <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form enctype="multipart/form-data" method="POST" action="../app/ProductsController.php">
+                <form enctype="multipart/form-data" method="POST" action="<?php echo BASE_PATH ?>produc">
                     
                     <div class="modal-body">
                         <div class="input-group mb-3">
@@ -114,7 +114,7 @@
                     </div>
                     <input id="input_oculto" type="hidden" name="action" value="create">
                     <input id="id" type="hidden" name="id">
-                    //global Token en el modal
+                    <!-- global Token en el modal -->
                     <input type="hidden" value="<?php echo $_SESSION['global_token'] ?>" name="global_token">
 
                 </form>
@@ -142,7 +142,7 @@
                     bodyFormData.append('action', 'delete');
                     bodyFormData.append('global_token', '<?php echo $_SESSION['global_token'] ?>');
 
-                    axios.post('../app/ProductsController.php', bodyFormData)
+                    axios.post('<?php echo BASE_PATH ?>produc', bodyFormData)
                     .then(function (response){
                         console.log(response);
                     })
