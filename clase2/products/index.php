@@ -114,6 +114,7 @@
                     </div>
                     <input id="input_oculto" type="hidden" name="action" value="create">
                     <input id="id" type="hidden" name="id">
+                    <input type="hidden" value="<?php echo $_SESSION['global_token'] ?>" name="global_token">
 
                 </form>
             </div>
@@ -138,6 +139,7 @@
                     var bodyFormData = new FormData();
                     bodyFormData.append('id', id);
                     bodyFormData.append('action', 'delete');
+                    bodyFormData.append('global_token', '<?php echo $_SESSION['global_token'] ?>');
 
                     axios.post('../app/ProductsController.php', bodyFormData)
                     .then(function (response){

@@ -60,7 +60,7 @@
             <h1>Acceso al panel</h1>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas corrupti, officia ex dolore ad veniam excepturi distinctio! Perspiciatis expedita aliquid vitae enim labore. Repudiandae cupiditate eos quod labore laborum! Magni.</p>
           </div>
-          <form method="post" action="app/AuthController.php" class="form">
+          <form method="post" action="auth" class="form">
             <label for="">Correo electronico</label>
             <div class="input-group mb-3">
               <span class="input-group-text" id="basic-addon1">@</span>
