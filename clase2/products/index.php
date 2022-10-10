@@ -46,7 +46,7 @@
                                             <div class="row">
                                                 <a data-product='<?php echo json_encode($product) ?>' onclick="editProduct(this)" data-bs-toggle="modal" data-bs-target="#createProductModal" href="#" class="btn btn-primary col-6">Editar</a>
                                                 <a onclick="remove(<?php echo $product->id ?>)" href="#" class="btn btn-danger col-6">Eliminar</a>
-                                                <a href="details.php?slug=<?php echo $product->slug ?>" class="mt-2 btn btn-success col-12">Detalles</a>
+                                                <a href="<?php echo BASE_PATH ."product/". $product->slug ?>" class="mt-2 btn btn-success col-12">Detalles</a>
                                             </div>
                                         </div>
                                     </div>

@@ -4,6 +4,7 @@
 
     <?php include "../layouts/head.template.php"; ?>
     <?php 
+        // var_dump($_GET);
         include "../app/ProductsSlugConstroller.php";
         $producto = new ProductSlugController;
         $product = $producto->infoProduct($_GET['slug']);
